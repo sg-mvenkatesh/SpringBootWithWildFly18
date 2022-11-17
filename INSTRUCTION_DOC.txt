@@ -1,0 +1,28 @@
+=========== HOW TO CREATE A WAR FILE SPECIFIC TO THE PROFILE. =====================
+STEP 1 :
+	- Create EP as your wish (Rest EP , MVC EP's... ETC...!!)
+	- in Maven r gradle...!!
+	- add how many profile you need that many in application.properties file in SpringWithWildFly/src/main/resources/application.properties
+
+STEP 2:
+	- SetUp the server in you STS tool Idea and add the Wild Fly Server in server window
+	- Right click and do clean.
+
+STEP 3:
+	- Then in your "application.properties" files add -> "spring.profiles.active=@spring.profiles.active@" this line.
+	- add below tag in POM.xml ->  under ->  <build> tag
+	-  <resources>
+        <resource>
+            <directory>src/main/resources</directory>
+            <filtering>true</filtering>
+        </resource>
+    </resources>
+	
+STEP 4:
+	- Then from terminal window in STS tool run below command.
+	- "mvn package -Dspring.profiles.active=profile-name" -> (this will Genrate the .war file with profile which we specified.)
+	
+STEP 5:
+	- Now clean the server in your STS and then deploy your project and then
+	- run then server now it will run in -> "SPECIFIED PROFILE" -> it will fetch the datas from that profile only...!!!
+	
